@@ -47,6 +47,16 @@ namespace DapperApp
                         SelectAll(cn);
                         break;
 
+                    case "tableadapter":
+                        GetIdentityWithTableAdapter();
+                        break;
+
+                    case "identity":
+                        SelectAll(cn);
+                        GetIdentityWithDapper(cn);
+                        SelectAll(cn);
+                        break;
+
                     default:
                         break;
                 }
@@ -129,6 +139,59 @@ namespace DapperApp
                 }
 
                 Console.WriteLine("End Transaction");
+            }
+        }
+
+
+        static void GetIdentityWithTableAdapter()
+        {
+            //  TableAdapterの接続文字列は、Settingsのパーシャルクラスで設定済
+            using (var ta = new SampleDatasetTableAdapters.ItemTableAdapter())
+            {
+                WriteLineAllItemWithTableAdapter(ta);
+
+
+                //  TableAdapterのRowUpdatedイベントハンドラの追加
+                ta.AddRowUpdatedEvent();
+
+                var ds = new SampleDataset();
+                var row = ds.Item.NewItemRow();
+                row.ItemName = "秋映";
+                ds.Item.AddItemRow(row);
+
+                ta.Update(ds);
+                //  @@IDENTITYで取得した値を表示
+                Console.WriteLine("@@IDENTITY -> " + ds.Item.FirstOrDefault().ID.ToString() + ":" + ds.Item.FirstOrDefault().ItemName);
+
+
+                WriteLineAllItemWithTableAdapter(ta);
+            }
+        }
+
+
+        static void WriteLineAllItemWithTableAdapter(SampleDatasetTableAdapters.ItemTableAdapter ta)
+        {
+            var msg = string.Join(Environment.NewLine, ta.GetData().Select(a => a.ID.ToString() + ":" + a.ItemName));
+
+            Console.WriteLine("------------------------------------");
+            Console.WriteLine(msg);
+            Console.WriteLine("------------------------------------");
+        }
+
+
+        static void GetIdentityWithDapper(System.Data.OleDb.OleDbConnection cn)
+        {
+            //  2回回しても問題なく動作する
+            for (int i = 0; i < 2; i++)
+            {
+                var sql = "INSERT INTO Item(ItemName) VALUES (@ItemName)";
+                cn.Execute(sql, new { ItemName = "秋映" });
+
+                var id = (int)cn.Query("SELECT @@IDENTITY as ID").First().ID;
+                Console.WriteLine("@@IDENTITY -> " + id.ToString());
+
+                var results = cn.Query<Item>("SELECT * FROM Item WHERE ID = @Id", new { @Id = id });
+                Console.WriteLine(results.First().ID + ":" + results.First().ItemName);
             }
         }
     }
