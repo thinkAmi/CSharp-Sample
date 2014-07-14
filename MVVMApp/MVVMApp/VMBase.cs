@@ -12,7 +12,11 @@ namespace MVVMApp
 {
     class VMBase : ViewModelBase, INotifyDataErrorInfo
     {
-        private readonly Dictionary<string, List<string>> _errors = new Dictionary<string, List<string>>();
+        //  List<T>を使った上でエラーメッセージの重複をチェックするくらいなら、
+        //  HashSet<T>を使えばエラーメッセージの重複は発生せず、パフォーマンス的にも良い
+        //  See: http://theburningmonk.com/2011/03/hashset-vs-list-vs-dictionary/
+        private readonly Dictionary<string, HashSet<string>> _errors = new Dictionary<string, HashSet<string>>();
+        //private readonly Dictionary<string, List<string>> _errors = new Dictionary<string, List<string>>();
 
 
         //  RaisePropertyChangedメソッドをオーバーライドして、
@@ -34,13 +38,14 @@ namespace MVVMApp
             {
                 if (!_errors.ContainsKey(propertyName))
                 {
-                    _errors[propertyName] = new List<string>();
+                    _errors[propertyName] = new HashSet<string>();
                 }
 
-                if (!_errors[propertyName].Contains(errorMessage))
-                {
-                    _errors[propertyName].Add(errorMessage);
-                }
+                _errors[propertyName].Add(errorMessage);
+                //if (!_errors[propertyName].Contains(errorMessage))
+                //{
+                //    _errors[propertyName].Add(errorMessage);
+                //}
             }
 
             //  忘れずにエラー情報の変更を通知
