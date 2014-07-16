@@ -54,11 +54,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DataGridView.xaml.cs">
+      <DependentUpon>DataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataGridViewModel.cs" />
+    <Compile Include="Order.cs" />
     <Compile Include="TextBoxView.xaml.cs">
       <DependentUpon>TextBoxView.xaml</DependentUpon>
     </Compile>
     <Compile Include="TextBoxViewModel.cs" />
     <Compile Include="VMBase.cs" />
+    <Page Include="DataGridView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

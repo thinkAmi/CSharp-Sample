@@ -1,0 +1,76 @@
+﻿<Window x:Class="MVVMApp.DataGridView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:MVVMApp"
+        Title="DataGridView" Height="150" Width="300">
+    <Window.DataContext>
+        <local:DataGridViewModel />
+    </Window.DataContext>
+    <Window.Resources>
+
+        <!-- DataGridTextColumn向けのStyle -->
+        <Style TargetType="{x:Type FrameworkElement}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip" 
+                  Value="{Binding RelativeSource={RelativeSource Self},
+                    Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <!-- FrameworkElementにはBackgroundがないため、共通化できない部分はTextBox/TextBlockそれぞれに書く -->
+        <Style x:Key="errorStyleLostFocus" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type FrameworkElement}}" >
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="Background" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="errorStyleGotFocus" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type FrameworkElement}}" >
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="Background" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- DataGridTemplateColumn向けのStyle -->
+        <Style x:Key="textbox" TargetType="{x:Type TextBox}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip" 
+                Value="{Binding Path=(Validation.Errors)[0].ErrorContent,
+                                RelativeSource={RelativeSource Self}}" />
+                    <Setter Property="Background" Value="Pink" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <DataGrid AutoGenerateColumns="False" Margin="10" ItemsSource="{Binding UpdateSourceTrigger=PropertyChanged, Path=DataGrid}">
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="ValidationErrorTemplate" Value="{x:Null}" />
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" IsReadOnly="True" Binding="{Binding Path=ID}" />
+                <DataGridTextColumn Header="商品名" Binding="{Binding Path=ItemName}" />
+
+                <!-- DataGridTemplateColumnを使ったエラーチェックと表示 -->
+                <DataGridTemplateColumn Header="数量">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Style="{StaticResource ResourceKey=textbox}"  Text="{Binding Path=Quantity, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <!-- DataGridTextColumnを使ったエラーチェックと表示 -->
+                <DataGridTextColumn Header="単価" ElementStyle="{StaticResource errorStyleLostFocus}" EditingElementStyle="{StaticResource errorStyleGotFocus}" Binding="{Binding Path=UnitPrice, UpdateSourceTrigger=PropertyChanged}" />
+                
+                <DataGridTextColumn Header="合計" Binding="{Binding Path=TotalPrice}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
