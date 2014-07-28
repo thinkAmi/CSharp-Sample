@@ -1,0 +1,13 @@
+﻿<Window x:Class="WebbrowserGeoJson.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:WebbrowserGeoJson"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.DataContext>
+        <local:MainWindowViewModel />
+    </Window.DataContext>
+    <Grid>
+        <WebBrowser local:WebBrowserUtility.Source="{Binding Uri}"
+                    local:WebBrowserUtility.ObjectForScripting="{Binding GoogleMap}" />
+    </Grid>
+</Window>
