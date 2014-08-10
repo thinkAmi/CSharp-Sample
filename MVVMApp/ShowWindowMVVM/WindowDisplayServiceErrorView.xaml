@@ -1,0 +1,17 @@
+﻿<Window x:Class="ShowWindowMVVM.WindowDisplayServiceErrorView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:ShowWindowMVVM"
+        xmlns:mvvm="clr-namespace:Microsoft.TeamFoundation.MVVM;assembly=Microsoft.TeamFoundation.Controls"
+        mvvm:MVVMSupport.ViewModel="{Binding}"
+        Title="WindowDisplayServiceErrorView" Height="50" Width="100">
+    <Window.DataContext>
+        <local:WindowDisplayServiceErrorViewModel />
+    </Window.DataContext>
+    <Window.Resources>
+        <mvvm:RegisterWindow x:Key="ErrorWindowKey" Type="local:WindowDisplayServiceErrorView" />
+    </Window.Resources>
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+        <TextBlock Text="Error Window" />
+    </Grid>
+</Window>

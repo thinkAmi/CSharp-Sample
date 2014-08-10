@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVMApp", "MVVMApp\MVVMApp.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageBoxMVVM", "MessageBoxMVVM\MessageBoxMVVM.csproj", "{3D153AB7-EC3D-4BB1-AAEE-6FC9ABF626DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowWindowMVVM", "ShowWindowMVVM\ShowWindowMVVM.csproj", "{14239779-BD33-4F3D-A70C-35C20F0978DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{3D153AB7-EC3D-4BB1-AAEE-6FC9ABF626DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D153AB7-EC3D-4BB1-AAEE-6FC9ABF626DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D153AB7-EC3D-4BB1-AAEE-6FC9ABF626DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14239779-BD33-4F3D-A70C-35C20F0978DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14239779-BD33-4F3D-A70C-35C20F0978DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14239779-BD33-4F3D-A70C-35C20F0978DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14239779-BD33-4F3D-A70C-35C20F0978DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

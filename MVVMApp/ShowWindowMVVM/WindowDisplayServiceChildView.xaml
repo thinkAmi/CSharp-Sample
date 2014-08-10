@@ -1,0 +1,12 @@
+﻿<Window x:Class="ShowWindowMVVM.WindowDisplayServiceChildView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:ShowWindowMVVM"
+        Title="WindowDisplayServiceChildView" Height="50" Width="100">
+    <Window.DataContext>
+        <local:WindowDisplayServiceChildViewModel />
+    </Window.DataContext>
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+        <TextBlock Text="{Binding Path=Text}" />
+    </Grid>
+</Window>
