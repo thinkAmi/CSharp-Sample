@@ -1,0 +1,12 @@
+﻿<Application 
+    x:Class="ShowWindowMVVM.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    StartupUri="WindowDisplayServiceParentView.xaml">
+    <!--StartupUri="DataContextChangedParentView.xaml">-->
+    
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
