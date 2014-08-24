@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowWindowMVVM", "ShowWindo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGridMVVM", "DataGridMVVM\DataGridMVVM.csproj", "{36E3F963-8582-4302-85B6-D0BFC0CE776B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericPrincipalMVVM", "GenericPrincipalMVVM\GenericPrincipalMVVM.csproj", "{B70A2F7E-6176-468D-9518-0A887D087605}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{36E3F963-8582-4302-85B6-D0BFC0CE776B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36E3F963-8582-4302-85B6-D0BFC0CE776B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36E3F963-8582-4302-85B6-D0BFC0CE776B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B70A2F7E-6176-468D-9518-0A887D087605}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B70A2F7E-6176-468D-9518-0A887D087605}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B70A2F7E-6176-468D-9518-0A887D087605}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B70A2F7E-6176-468D-9518-0A887D087605}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,22 @@
+﻿<Window x:Class="GenericPrincipalMVVM.LoggedinView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:GenericPrincipalMVVM"
+        Title="LoggedinView" Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Loggedin User:"/>
+        <TextBlock Grid.Row="1" Text="{Binding Path=LoggedinUser}"/>
+        <Button Grid.Row="2" Content="All by RelayCommand" Command="{Binding Path=AllCommand}"/>
+        <Button Grid.Row="3" Content="Limit by RelayCommand" Command="{Binding Path=LimitCommand}"/>
+        <Button Grid.Row="4" Content="All by Visibility" Visibility="{Binding Path=VisibilityAll}"/>
+        <Button Grid.Row="5" Content="Limit by Visibility" Visibility="{Binding Path=VisibilityLimit}"/>
+    </Grid>
+</Window>
