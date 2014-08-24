@@ -1,0 +1,27 @@
+﻿<Window x:Class="GenericPrincipalMVVM.LoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:GenericPrincipalMVVM"
+        xmlns:mvvm="clr-namespace:Microsoft.TeamFoundation.MVVM;assembly=Microsoft.TeamFoundation.Controls"
+        mvvm:MVVMSupport.ViewModel="{Binding}"
+        Title="LoginView" Height="100" Width="100">
+    <Window.DataContext>
+        <local:LoginViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <mvvm:RegisterWindow x:Key="LoggedinViewKey" Type="local:LoggedinView" />
+    </Window.Resources>
+    <Grid FocusManager.FocusedElement="{Binding ElementName=passwordBox}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="UserName:"/>
+        <PasswordBox Grid.Row="1" Name="passwordBox">
+            <PasswordBox.InputBindings>
+                <KeyBinding Command="{Binding Path=LoginCommand}" Key="Enter" 
+                            CommandParameter="{Binding ElementName=passwordBox}"/>
+            </PasswordBox.InputBindings>
+        </PasswordBox>
+    </Grid>
+</Window>
