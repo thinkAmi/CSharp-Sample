@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGridMVVM", "DataGridMVV
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericPrincipalMVVM", "GenericPrincipalMVVM\GenericPrincipalMVVM.csproj", "{B70A2F7E-6176-468D-9518-0A887D087605}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeclarativeSecurityCheckMVVM", "DeclarativeSecurityCheckMVVM\DeclarativeSecurityCheckMVVM.csproj", "{A6053709-5A06-421E-867F-4C536253DBCA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{B70A2F7E-6176-468D-9518-0A887D087605}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B70A2F7E-6176-468D-9518-0A887D087605}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B70A2F7E-6176-468D-9518-0A887D087605}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6053709-5A06-421E-867F-4C536253DBCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6053709-5A06-421E-867F-4C536253DBCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6053709-5A06-421E-867F-4C536253DBCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6053709-5A06-421E-867F-4C536253DBCA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
