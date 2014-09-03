@@ -16,7 +16,7 @@ namespace DeclarativeSecurityCheckMVVM
         public App()
             : base()
         {
-            //  集約エラーハンドラ
+            //  集約例外ハンドラ
             AppDomain.CurrentDomain.UnhandledException += (s, e) =>
             {
                 UnhandledException((Exception)e.ExceptionObject, "AppDomain.CurrentDomain.UnhandledException");
