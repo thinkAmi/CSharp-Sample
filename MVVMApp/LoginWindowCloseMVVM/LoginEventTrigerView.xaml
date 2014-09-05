@@ -1,0 +1,27 @@
+﻿<Window x:Class="LoginWindowCloseMVVM.LoginEventTrigerView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:activity="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:actions="http://schemas.microsoft.com/expression/2010/interactions" 
+        xmlns:local="clr-namespace:LoginWindowCloseMVVM"
+        x:Name="LoginWindow"
+        Title="LoginEventTrigerView" Height="100" Width="200">
+    <Window.DataContext>
+        <local:LoginEventTrigerViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Button Content="Login1" IsDefault="True" Margin="10">
+            <activity:Interaction.Triggers>
+                <activity:EventTrigger EventName="Click">
+                    <!-- コマンド実行 -->
+                    <activity:InvokeCommandAction Command="{Binding Path=LoginCommand}"/>
+
+                    <!-- WindowのDialogResultを設定して、Windowを閉じる -->
+                    <actions:ChangePropertyAction TargetObject="{Binding ElementName=LoginWindow}"
+                                             PropertyName="DialogResult"
+                                             Value="True"/>
+                </activity:EventTrigger>
+            </activity:Interaction.Triggers>
+        </Button>
+    </Grid>
+</Window>
