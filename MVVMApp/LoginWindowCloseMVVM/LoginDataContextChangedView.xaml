@@ -1,0 +1,12 @@
+﻿<Window x:Class="LoginWindowCloseMVVM.LoginDataContextChangedView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:LoginWindowCloseMVVM"
+        Title="LoginDataContextChangedView" Height="100" Width="200">
+    <Window.DataContext>
+        <local:LoginDataContextChangedViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Button Command="{Binding Path=LoginCommand}" Content="Login2" IsDefault="True" Margin="10"/>
+    </Grid>
+</Window>
