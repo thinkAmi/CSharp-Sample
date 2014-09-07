@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeclarativeSecurityCheckMVV
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginWindowCloseMVVM", "LoginWindowCloseMVVM\LoginWindowCloseMVVM.csproj", "{156C32D1-70E9-4446-BA21-62B52E1F3B15}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialPortReceiver", "SerialPortReceiver\SerialPortReceiver.csproj", "{7AA793B0-B304-42B4-AE72-4CD83871657B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{156C32D1-70E9-4446-BA21-62B52E1F3B15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{156C32D1-70E9-4446-BA21-62B52E1F3B15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{156C32D1-70E9-4446-BA21-62B52E1F3B15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AA793B0-B304-42B4-AE72-4CD83871657B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AA793B0-B304-42B4-AE72-4CD83871657B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AA793B0-B304-42B4-AE72-4CD83871657B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AA793B0-B304-42B4-AE72-4CD83871657B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

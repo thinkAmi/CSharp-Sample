@@ -1,0 +1,31 @@
+﻿<#@ template debug="true" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+
+using System.Windows.Input;				// ICommand
+using Microsoft.TeamFoundation.MVVM;    // ViewModelBase
+
+namespace SerialPortReceiver
+{
+    public partial class SerialPortViewModel : ViewModelBase
+    {
+<# foreach(var x in new string[] { "Start", "Stop" }) { #>
+        private ICommand _<#= x #>Command;
+        public ICommand <#= x #>Command
+        {
+            get
+            {
+                if (_<#= x #>Command == null)
+                {
+                    _<#= x #>Command = new RelayCommand(Execute<#= x #>Command, CanExecute<#= x #>Command);
+                }
+                return _<#= x #>Command;
+            }
+        }
+
+<# } #>
+    }
+}
