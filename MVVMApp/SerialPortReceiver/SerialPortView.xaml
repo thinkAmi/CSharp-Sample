@@ -1,0 +1,40 @@
+﻿<Window x:Class="SerialPortReceiver.SerialPortView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:SerialPortReceiver"
+        Title="SerialPortView" Height="300" Width="300">
+    <Window.DataContext>
+        <local:SerialPortViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Label Content="status" HorizontalAlignment="Center"/>
+            <TextBlock TextAlignment="Center" Width="200"
+                       Text="{Binding Path=Status}"
+                       Background="{Binding Path=StatusBackground}"/>
+        </StackPanel>
+        <ComboBox Grid.Row="1" Margin="10"
+                  ItemsSource="{Binding Path=ComPorts}"
+                  DisplayMemberPath="Description"
+                  SelectedItem="{Binding Path=SelectedComPort}"/>
+        <Button Content="Start" Grid.Row="2" Margin="10" HorizontalAlignment="Left" Width="120"
+                Command="{Binding Path=StartCommand}"/>
+        <Button Content="Stop" Grid.Row="2" Margin="10" HorizontalAlignment="Right" Width="120"
+                Command="{Binding Path=StopCommand}"/>
+        <DataGrid Grid.Row="4"
+                  AutoGenerateColumns="False" IsReadOnly="False"
+                  ItemsSource="{Binding Path=DataGridSource, UpdateSourceTrigger=PropertyChanged}"
+                  local:DataGridBehavior.DisplayRowNumber="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Data"
+                                    Binding="{Binding Path=ReadData}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
