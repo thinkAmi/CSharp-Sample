@@ -1,0 +1,24 @@
+﻿<Window x:Class="SharedViewMVVM.SharedView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="{Binding Path=WindowTitle}"
+        Height="300" Width="300">
+    <Grid>
+        <DataGrid AutoGenerateColumns="False" Margin="10"
+                  ItemsSource="{Binding Path=SlipSource}">
+            <DataGrid.Resources>
+                <!-- DataGridのColumnHeader用 -->
+                <FrameworkElement x:Key="proxyElement" DataContext="{Binding}"/>
+            </DataGrid.Resources>
+
+            <!-- DataGridのColumnHeader用 -->
+            <ContentControl Visibility="Collapsed" Content="{StaticResource ResourceKey=proxyElement}"/>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="品目名" Binding="{Binding Path=ItemName}" />
+                <DataGridTextColumn Header="{Binding Path=DataContext.QuantityTitle, Source={StaticResource ResourceKey=proxyElement}}" 
+                                    Binding="{Binding Path=Quantity, UpdateSourceTrigger=PropertyChanged}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
