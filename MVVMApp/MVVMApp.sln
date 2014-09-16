@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialPortReceiver", "Seria
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedViewMVVM", "SharedViewMVVM\SharedViewMVVM.csproj", "{4C1EE555-A72B-4C55-A118-7CB859A1985C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoCompleteBoxMVVM", "AutoCompleteBoxMVVM\AutoCompleteBoxMVVM.csproj", "{2D2E7ACB-2CCB-4A28-8B6C-0CE65EDE07BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{4C1EE555-A72B-4C55-A118-7CB859A1985C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C1EE555-A72B-4C55-A118-7CB859A1985C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C1EE555-A72B-4C55-A118-7CB859A1985C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D2E7ACB-2CCB-4A28-8B6C-0CE65EDE07BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D2E7ACB-2CCB-4A28-8B6C-0CE65EDE07BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D2E7ACB-2CCB-4A28-8B6C-0CE65EDE07BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D2E7ACB-2CCB-4A28-8B6C-0CE65EDE07BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

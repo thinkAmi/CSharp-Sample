@@ -1,0 +1,48 @@
+﻿<Window x:Class="AutoCompleteBoxMVVM.AutoCompleteView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:AutoCompleteBoxMVVM"
+        xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+        Title="AutoCompleteView" Height="300" Width="300">
+    <Window.DataContext>
+        <local:AutoCompleteViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <DataTemplate x:Key="AutoCompleteBoxItemTemplate">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="{Binding Name}"
+                       Width="100" />
+                <Label Content="{Binding ID}"
+                       FontStyle="Italic"
+                       Foreground="DarkGray" />
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBlock Grid.Row="0" Text="りんご" VerticalAlignment="Center"/>
+            <toolkit:AutoCompleteBox Grid.Row="0" Margin="10,0,0,0" Width="150"
+                                     ItemsSource="{Binding Path=RingoSource}"
+                                     ValueMemberPath="Name"
+                                 
+                                     SelectedItem="{Binding Path=SelectedRingo, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                                     Text="{Binding Path=SelectedRingoName, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                                     
+                                     ItemTemplate="{StaticResource ResourceKey=AutoCompleteBoxItemTemplate}"
+                                     ItemFilter="{Binding RingoFilter}"/>
+            <Button Content="追加" Margin="10,0,0,0" Width="50"
+                    Command="{Binding Path=AddCommand}"/>
+        </StackPanel>
+        <DataGrid Grid.Row="1" Margin="10" AutoGenerateColumns="False"
+                  ItemsSource="{Binding Path=AddedRingo}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}"/>
+                <DataGridTextColumn Header="名前" Binding="{Binding Path=Name}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
