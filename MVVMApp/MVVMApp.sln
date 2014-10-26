@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedViewMVVM", "SharedVie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoCompleteBoxMVVM", "AutoCompleteBoxMVVM\AutoCompleteBoxMVVM.csproj", "{2D2E7ACB-2CCB-4A28-8B6C-0CE65EDE07BF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicStringFormatMVVM", "DynamicStringFormatMVVM\DynamicStringFormatMVVM.csproj", "{197D855B-6A74-4A20-87BB-0B7530FECE45}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{2D2E7ACB-2CCB-4A28-8B6C-0CE65EDE07BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D2E7ACB-2CCB-4A28-8B6C-0CE65EDE07BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D2E7ACB-2CCB-4A28-8B6C-0CE65EDE07BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{197D855B-6A74-4A20-87BB-0B7530FECE45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{197D855B-6A74-4A20-87BB-0B7530FECE45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{197D855B-6A74-4A20-87BB-0B7530FECE45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{197D855B-6A74-4A20-87BB-0B7530FECE45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

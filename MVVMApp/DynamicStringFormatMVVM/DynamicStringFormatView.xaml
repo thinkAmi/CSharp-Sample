@@ -1,0 +1,151 @@
+﻿<Window x:Class="DynamicStringFormatMVVM.DynamicStringFormatView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:DynamicStringFormatMVVM"
+        Title="DynamicStringFormatView" Height="700" Width="400">
+    
+    <!-- DataContextを設定すると動作順が変わってしまい、うまく動作しない -->
+    <!-- コードビハインドでDataContextを設定した時も同様に、うまく動作しない -->
+    
+    <Window.Resources>
+        <System:Boolean x:Key="True">True</System:Boolean>
+        <System:Boolean x:Key="False">False</System:Boolean>
+
+        <local:ParameterConverter x:Key="parameter"/>
+
+        <local:MultiBindingConverter x:Key="multiBinding"/>
+
+        <FrameworkElement x:Key="proxyElement" DataContext="{Binding}"/>
+        <local:DependencyObjectConverter 
+                        x:Key="DependencyObjectNormal"
+                        IsReverse="{Binding Path=DataContext.Normal, Source={StaticResource ResourceKey=proxyElement}}"/>
+        <local:DependencyObjectConverter 
+                        x:Key="DependencyObjectReverse"
+                        IsReverse="{Binding Path=DataContext.Reverse, Source={StaticResource ResourceKey=proxyElement}}"/>
+    </Window.Resources>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+
+        <!-- 元々の表示 -->
+        <GroupBox Header="Normal" Grid.Row="0" Margin="10">
+            <StackPanel>
+                <TextBlock Text="{Binding Path=Quantity}"/>
+                <TextBlock Text="{Binding Path=MinusQuantity}"/>
+            </StackPanel>
+        </GroupBox>
+
+        
+        <!-- StringFormatを使って、符号逆転で表示 -->
+        <GroupBox Header="[Reverse] StringFormat" Grid.Row="1" Margin="10">
+            <StackPanel>
+                <TextBlock Text="{Binding Path=Quantity, StringFormat={}{0:-##\,#;##\,#}}"/>
+                <TextBlock Text="{Binding Path=MinusQuantity, StringFormat={}{0:-##\,#;##\,#}}"/>
+            </StackPanel>
+        </GroupBox>
+
+
+        <!-- Converter + ConverterParameterを使って、符号そのままで表示 -->
+        <GroupBox Header="[Normal] Converter + ConverterParameter(False)" Grid.Row="2" Margin="10">
+            <StackPanel>
+                <TextBlock Text="{Binding Path=Quantity, Converter={StaticResource parameter}, ConverterParameter={StaticResource False}}"/>
+                <TextBlock Text="{Binding Path=MinusQuantity, Converter={StaticResource parameter}, ConverterParameter={StaticResource False}}"/>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- Converter + ConverterParameterを使って、符号逆転で表示 -->
+        <GroupBox Header="[Reverse] Converter + ConverterParameter(True)" Grid.Row="3" Margin="10">
+            <StackPanel>
+                <TextBlock Text="{Binding Path=Quantity, Converter={StaticResource parameter}, ConverterParameter={StaticResource True}}"/>
+                <TextBlock Text="{Binding Path=MinusQuantity, Converter={StaticResource parameter}, ConverterParameter={StaticResource True}}"/>
+            </StackPanel>
+        </GroupBox>
+
+
+        <!-- DependencyObject + Converter + ProxyElementで符号そのままで表示 -->
+        <ContentControl Visibility="Collapsed" Content="{StaticResource ResourceKey=proxyElement}"/>
+
+        <GroupBox Header="[Normal] DependencyObject + Converter + ProxyElement" Grid.Row="4" Margin="10">
+            <StackPanel>
+                <StackPanel.Resources>
+                    <!-- 本当はこちらが走って欲しい/ Reverseへのバインディングが最初にあってほしい -->
+                    <local:DependencyObjectConverter 
+                        x:Key="DependencyObjectNormal"
+                        IsReverse="{Binding Path=DataContext.Normal, Source={StaticResource ResourceKey=proxyElement}}"/>
+                </StackPanel.Resources>
+                <!-- リソースが出来る前に走ってしまうっぽい:何か回避する手段はないか -->
+                <TextBlock Text="{Binding Path=Quantity, Converter={StaticResource ResourceKey=DependencyObjectNormal}}"/>
+                <TextBlock Text="{Binding Path=MinusQuantity, Converter={StaticResource ResourceKey=DependencyObjectNormal}}"/>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- DependencyObject + Converter + ProxyElementで符号逆転で表示 -->
+        <GroupBox Header="[Reverse] DependencyObject + Converter + ProxyElement" Grid.Row="5" Margin="10">
+            <StackPanel>
+                <StackPanel.Resources>
+                    <!-- 本当はこちらが走って欲しい/ Reverseへのバインディングが最初にあってほしい -->
+                    <local:DependencyObjectConverter 
+                        x:Key="DependencyObjectReverse"
+                        IsReverse="{Binding Path=DataContext.Reverse, Source={StaticResource ResourceKey=proxyElement}}"/>
+                </StackPanel.Resources>
+                <!-- リソースが出来る前に走ってしまうっぽい:何か回避する手段はないか -->
+                <TextBlock Text="{Binding Path=Quantity, Converter={StaticResource ResourceKey=DependencyObjectReverse}}"/>
+                <TextBlock Text="{Binding Path=MinusQuantity, Converter={StaticResource ResourceKey=DependencyObjectReverse}}"/>
+            </StackPanel>
+        </GroupBox>
+
+
+        <!-- Converter + MultiBindingで符号そのままで表示 -->
+        <GroupBox Header="[Normal] Converter + MultiBinding" Grid.Row="6" Margin="10">
+            <StackPanel>
+                <TextBlock>
+                    <TextBlock.Text>
+                        <MultiBinding Converter="{StaticResource multiBinding}">
+                            <Binding Path="Normal"/>
+                            <Binding Path="Quantity"/>
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+                <TextBlock>
+                    <TextBlock.Text>
+                        <MultiBinding Converter="{StaticResource multiBinding}">
+                            <Binding Path="Normal"/>
+                            <Binding Path="MinusQuantity"/>
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- Converter + MultiBindingで符号逆転で表示 -->
+        <GroupBox Header="[Reverse] Converter + MultiBinding" Grid.Row="7" Margin="10">
+            <StackPanel>
+                <TextBlock>
+                    <TextBlock.Text>
+                        <MultiBinding Converter="{StaticResource multiBinding}">
+                            <Binding Path="Reverse"/>
+                            <Binding Path="Quantity"/>
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+                <TextBlock>
+                    <TextBlock.Text>
+                        <MultiBinding Converter="{StaticResource multiBinding}">
+                            <Binding Path="Reverse"/>
+                            <Binding Path="MinusQuantity"/>
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</Window>
