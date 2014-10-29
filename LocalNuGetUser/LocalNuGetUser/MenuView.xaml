@@ -1,0 +1,20 @@
+﻿<Window x:Class="LocalNuGetUser.MenuView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:LocalNuGetUser"
+        xmlns:wpf="clr-namespace:WPFProject;assembly=WPFProject"
+        xmlns:form="clr-namespace:WindowsFormProject;assembly=WindowsFormProject"
+        xmlns:mvvm="clr-namespace:Microsoft.TeamFoundation.MVVM;assembly=Microsoft.TeamFoundation.Controls"
+        mvvm:MVVMSupport.ViewModel="{Binding}"
+        Title="MenuView" Height="100" Width="100">
+    <Window.DataContext>
+        <local:MenuViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <mvvm:RegisterWindow x:Key="WPF" Type="wpf:MainView"/>
+        <mvvm:RegisterWindow x:Key="WindowsForm" Type="local:WindowsFormView"/>
+    </Window.Resources>
+    <Grid Margin="10">
+        <Button Content="Open" Command="{Binding Path=OpenCommand}"/>
+    </Grid>
+</Window>

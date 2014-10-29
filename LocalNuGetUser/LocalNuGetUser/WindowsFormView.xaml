@@ -1,0 +1,11 @@
+﻿<Window x:Class="LocalNuGetUser.WindowsFormView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:form="clr-namespace:WindowsFormProject;assembly=WindowsFormProject"
+        Title="WindowsFormView" Height="300" Width="300">
+    <Grid>
+        <WindowsFormsHost>
+            <form:Form1 TopLevel="False" FormBorderStyle="None"/>
+        </WindowsFormsHost>
+    </Grid>
+</Window>
