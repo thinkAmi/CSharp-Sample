@@ -1,21 +1,25 @@
 CSharp-Sample
 =============
 
-V‚µ‚¢ƒTƒ“ƒvƒ‹‚ğ’Ç‰Á‚·‚é‚ÍA
+æ–°ã—ã„ã‚µãƒ³ãƒ—ãƒ«ã‚’è¿½åŠ ã™ã‚‹æ™‚ã¯ã€
 
 ```
-git checkout ffac5af -b <ƒuƒ‰ƒ“ƒ`–¼>
+git checkout ffac5af -b <ãƒ–ãƒ©ãƒ³ãƒå>
 ```
 
-‚Æ‚µ‚ÄAinitial commit‚©‚çƒuƒ‰ƒ“ƒ`‚ğì¬‚µ‚Ä‚¢‚Ü‚·B
+ã¨ã—ã¦ã€initial commitã‹ã‚‰ãƒ–ãƒ©ãƒ³ãƒã‚’ä½œæˆã—ã¦ã„ã¾ã™ã€‚
 
-@  
-‚Ü‚½Aƒuƒ‰ƒ“ƒ`‚Ì‚İæ“¾‚·‚éê‡‚ÍAƒ[ƒJƒ‹ƒuƒ‰ƒ“ƒ`‚ğudevelopmentvAƒŠƒ‚[ƒgƒuƒ‰ƒ“ƒ`‚ğuorigin/developmentv‚Æ‚·‚é‚ÆA
+ã€€  
+ã¾ãŸã€ãƒ–ãƒ©ãƒ³ãƒã®ã¿å–å¾—ã™ã‚‹å ´åˆã¯ã€ãƒ­ãƒ¼ã‚«ãƒ«ãƒ–ãƒ©ãƒ³ãƒã‚’ã€Œdevelopmentã€ã€ãƒªãƒ¢ãƒ¼ãƒˆãƒ–ãƒ©ãƒ³ãƒã‚’ã€Œorigin/developmentã€ã¨ã™ã‚‹ã¨ã€
 
 ```
 git checkout -b development origin/development
 ```
 
-‚Æ‚È‚è‚Ü‚·B
+ã¨ãªã‚Šã¾ã™ã€‚
 
-QlF[Git - ƒŠƒ‚[ƒg‚Ìƒuƒ‰ƒ“ƒ`‚ğclone‚·‚é - Qiita](http://qiita.com/shim0mura/items/85aa7fc762112189bd73)
+å‚è€ƒï¼š[Git - ãƒªãƒ¢ãƒ¼ãƒˆã®ãƒ–ãƒ©ãƒ³ãƒã‚’cloneã™ã‚‹ - Qiita](http://qiita.com/shim0mura/items/85aa7fc762112189bd73)
+
+ã€€  
+ã¾ãŸã€ã“ã‚Œã‚‰ã®ã‚µãƒ³ãƒ—ãƒ«ã§ã¯`Microsoft.TeamFoundation.MVVM`åå‰ç©ºé–“ã‚’ä½¿ã£ã¦ã„ã‚‹ã‚‚ã®ã‚‚ã‚ã‚Šã¾ã™ãŒã€å…¬å¼Blogã«ä»¥ä¸‹ã®è¨˜äº‹ãŒæ²è¼‰ã•ã‚Œã¾ã—ãŸã€‚ãã®ãŸã‚ã€`Microsoft.TeamFoundation.MVVM`ã®ä½¿ç”¨å‰ã«è¨˜äº‹ã‚’ç¢ºèªã—ã¦ã¿ã¦ãã ã•ã„ã€‚  
+[Microsoft.TeamFoundation.MVVM åå‰ç©ºé–“ã®åˆ©ç”¨ã«ã¤ã„ã¦ - Visual Studio ã‚µãƒãƒ¼ãƒˆ ãƒãƒ¼ãƒ  blog - Site Home - MSDN Blogs](http://blogs.msdn.com/b/jpvsblog/archive/2015/12/07/mvvm.aspx)
